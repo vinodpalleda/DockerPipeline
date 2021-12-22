@@ -37,7 +37,12 @@ node {
         sh "docker run -d --rm -p $httpPort:$httpPort --name $containerName $dockerHubUser/$containerName:$tag"
         echo "Application started on port: ${httpPort} (http)"
         */
-        sh "kubectl get pods"
+        sh """
+           kubectl get pods
+           kubectl delete deployment kubernetes-bootcamp
+           kubectl create deployment kubernetes-bootcamp --image=docker.io/anujsharma1990/docker-pipeline --port=8090
+           kubectl get pods
+        """
     }
 
 }
