@@ -5,6 +5,10 @@
   vars:
     ports_mapping: "8090:8090"
   tasks:
+    - name: Install docker python module
+      pip:
+        name: docker
+        
     - name: Create Application container
       docker_container:
         name: docker-pipeline
