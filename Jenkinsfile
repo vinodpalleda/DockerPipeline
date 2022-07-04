@@ -4,6 +4,9 @@ def dockerHubUser="anujsharma1990"
 def httpPort="8090"
 
 node {
+     environment {
+        PATH = "$PATH:/home/soft/apache-maven-3.8.6/bin"
+    }
 
     stage('Checkout') {
         checkout scm
